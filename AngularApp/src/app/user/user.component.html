@@ -1,0 +1,136 @@
+<div class="row">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-content white-text">
+        <div class="row">
+          <div class="col s5">
+            <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+              <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="userService.selectedUser._id">
+              <input type="hidden" name="isActive" value=true #name="ngModel" [(ngModel)]="userService.selectedUser.isActive">
+              <input type="hidden" name="registered" value=true #name="ngModel" [(ngModel)]="userService.selectedUser.registered">
+              
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="text" name="name" #name="ngModel" [(ngModel)]="userService.selectedUser.name" placeholder="Enter full name" required>
+                  <label>Name :
+                    <label class="red-text">*</label>
+                  </label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="text" name="email" #name="ngModel" [(ngModel)]="userService.selectedUser.email" placeholder="Enter Email Id">
+                  <label>Email :</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="text" name="phone" #name="ngModel" [(ngModel)]="userService.selectedUser.phone" placeholder="Enter Phone number">
+                  <label>Phone :</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="text" name="age" #name="ngModel" [(ngModel)]="userService.selectedUser.age" placeholder="Enter Age">
+                  <label>Age :</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="text" name="address" #name="ngModel" [(ngModel)]="userService.selectedUser.address" placeholder="Enter Address">
+                  <label>Address :</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                    <label>Bloodgroup</label>
+                    <ng-select [items]="bloodtype"
+                               #name="ngModel"
+                               bindLabel="name"
+                               autofocus
+                               bindValue="id"
+                               [(ngModel)]="userService.selectedUser.bloodgroup">
+                    </ng-select>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                <label>Gender :</label><br/><br/>
+                  <p>
+                    <label>
+                      <input name="gender" value="male" type="radio" checked #name="ngModel" [(ngModel)]="userService.selectedUser.gender"/>
+                      <span>Male</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input name="gender" value="female" type="radio" #name="ngModel" [(ngModel)]="userService.selectedUser.gender" />
+                      <span>Female</span>
+                    </label>
+                  </p>               
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                <label>Type :</label><br/><br/>
+                  <p>
+                    <label>
+                      <input name="type" value="donor" type="radio" checked #name="ngModel" [(ngModel)]="userService.selectedUser.type"/>
+                      <span>Donor</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input name="type" value="recipient" type="radio" #name="ngModel" [(ngModel)]="userService.selectedUser.type" />
+                      <span>Recipient</span>
+                    </label>
+                  </p>               
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <button class="btn btn-custom right" type="button" (click)="resetForm(userForm)">Reset</button>
+                  <button class="btn btn-custom right" type="submit" [disabled]="!userForm.valid">Submit</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col s7">
+              <table class="responsive-table highlight">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Phone</th>
+                      <th>Age</th>
+                      <th>Gender</th>
+                      <th>Type</th>
+                      <th>Active</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tr *ngFor="let u of userService.users">
+                    <td>{{u.name}}</td>
+                    <td>{{u.email}}</td>
+                    <td>{{u.phone}}</td>
+                    <td>{{u.age}}</td>
+                    <td>{{u.gender}}</td>
+                    <td>{{u.type}}</td>
+                    <td>{{u.isActive}}</td>
+                    <td>
+                        <a class="action-btn" (click)="onEdit(u)">
+                          <i class="material-icons">edit</i>
+                        </a>
+                        <a class="action-btn" (click)="onDelete(u._id,userForm)">
+                          <i class="material-icons">delete</i>
+                        </a>
+                      </td>
+                  </tr>
+                </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
