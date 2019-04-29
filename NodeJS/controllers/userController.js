@@ -5,11 +5,23 @@ var ObjectId = require('mongoose').Types.ObjectId;
 var { User } = require('../models/user');
 
 // => localhost:3000/users/
-router.get('/', (req, res) => {
-    User.find((err, docs) => {
-        if (!err) { res.send(docs); }
-        else { console.log('Error in Retriving Users :' + JSON.stringify(err, undefined, 2)); }
-    });
+router.get('/', (req, res, next) => {
+    // User.find((err, docs) => {
+    //     if (!err) { res.send(docs); }
+    //     else { console.log('Error in Retriving Users :' + JSON.stringify(err, undefined, 2)); }
+    // });
+    User.aggregate([
+        {
+            $geoNear: {
+                near: { type: 'Point', coordinates: [parseFloat(req.query.lng), parseFloat(req.query.lat)] },
+                distanceField: "dist.calculated",
+                maxDistance: 100000,
+                spherical: true
+            }
+        }
+    ]).then(function(users, next){
+        res.send(users);
+    }).catch(next);
 });
 
 router.get('/:id', (req, res) => {
@@ -36,7 +48,8 @@ router.post('/', (req, res) => {
 		address: req.body.address,
 		registered: req.body.registered,
 		latitude: req.body.latitude,
-		longitude: req.body.longitude
+		longitude: req.body.longitude,
+    geometry: req.body.geometry
     });
     u.save((err, doc) => {
         if (!err) { res.send(doc); }
@@ -61,7 +74,8 @@ router.put('/:id', (req, res) => {
 		address: req.body.address,
 		registered: req.body.registered,
 		latitude: req.body.latitude,
-		longitude: req.body.longitude
+		longitude: req.body.longitude,
+    geometry: req.body.geometry
     };
     User.findByIdAndUpdate(req.params.id, { $set: u }, { new: true }, (err, doc) => {
         if (!err) { res.send(doc); }
