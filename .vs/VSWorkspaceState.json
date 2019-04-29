@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\AngularApp",
+    "\\AngularApp\\src",
+    "\\AngularApp\\src\\app",
+    "\\AngularApp\\src\\app\\shared",
+    "\\AngularApp\\src\\app\\user",
+    "\\NodeJS\\models"
+  ],
+  "SelectedNode": "\\AngularApp\\src\\app\\shared\\user.model.ts",
+  "PreviewInSolutionExplorer": false
+}
