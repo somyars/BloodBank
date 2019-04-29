@@ -1,0 +1,85 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Bloodbank",
+		"_postman_id": "dea19e7c-6420-be23-2106-f7e90e84969b",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Users",
+			"request": {
+				"url": "http://localhost:3000/users",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Users by Id",
+			"request": {
+				"url": "http://localhost:3000/users/5cc23c79b84289a2d9476a59",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Insert Users",
+			"request": {
+				"url": "http://localhost:8080/users",
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Generate JWT Token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var data = JSON.parse(responseBody);\r",
+							"postman.clearGlobalVariable(\"jwt_token\");\r",
+							"postman.setGlobalVariable(\"jwt_token\", data.token);"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:5000/api/login",
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Use Token",
+			"request": {
+				"url": "http://localhost:5000/api/posts",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{jwt_token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
