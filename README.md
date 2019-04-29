@@ -1,9 +1,13 @@
 # Bloodbank
 
-This project uses MEAN stack for Bloodbank
+This project uses MEAN stack for Bloodbank.
+
 This project has below versions:
+
 Angular CLI: 7.3.8
+
 Node: 10.15.3
+
 Angular: 7.2.14
 
 ## Development server for Angular
