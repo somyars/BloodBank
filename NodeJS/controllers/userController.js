@@ -15,7 +15,7 @@ router.get('/', (req, res, next) => {
             $geoNear: {
                 near: { type: 'Point', coordinates: [parseFloat(req.query.lng), parseFloat(req.query.lat)] },
                 distanceField: "dist.calculated",
-                maxDistance: 100000,
+                maxDistance: 100000, // 100000 meters
                 spherical: true
             }
         }
