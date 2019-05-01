@@ -18,7 +18,10 @@ router.get('/', (req, res, next) => {
                 maxDistance: 100000, // 100000 meters
                 spherical: true
             }
-        }
+        },
+        {
+            $match: { bloodgroup: req.query.bloodgroup }
+           }
     ]).then(function(users, next){
         res.send(users);
     }).catch(next);
