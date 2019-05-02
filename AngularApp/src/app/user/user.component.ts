@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import {NgSelectModule, NgOption} from '@ng-select/ng-select';
@@ -53,12 +54,17 @@ export class UserComponent implements OnInit {
       address: "",
       registered: "",
       latitude: null,
-      longitude: null
+      longitude: null,
+      geometry: null,
     }
   }
 
   onSubmit(form: NgForm) {
     if (form.value._id == "") {
+      var address = (this.userService.selectedUser.address);
+      var add = geocode(address);
+      console.log(add);
+      console.log("back");
       this.userService.postUser(form.value).subscribe((res) => {
         this.resetForm(form);
         this.refreshUserList();
@@ -94,5 +100,8 @@ export class UserComponent implements OnInit {
       });
     }
   }
+
+
+   
 
 }

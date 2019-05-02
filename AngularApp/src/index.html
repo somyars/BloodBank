@@ -9,9 +9,37 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
   <app-root></app-root>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  <script> 
+  	// geocode();
+  	function geocode(address){
+  		console.log(address);
+  		var location = address;	
+  		// console.log(address1);
+  		console.log("hello1");
+  		// location = x;
+  		axios.get('https://maps.googleapis.com/maps/api/geocode/json', {params:{
+  			address: location,
+  			key: 'AIzaSyBOokqciuF-0nZEOSCLZ4DuUXcfQw4d31Y'
+  			}
+  	}).then(function(response){
+  		console.log(response);
+  		var formattedAddress = (response.data.results[0].formatted_address);
+  		return response.data.results[0].formatted_address;
+
+  	}).catch(function(error){
+  		console.log(error);
+  	});
+
+  }
+  </script>
+
+
 </body>
 </html>
+
+
