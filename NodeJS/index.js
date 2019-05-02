@@ -5,8 +5,8 @@ const { mongoose } = require('./db.js');
 var userController = require('./controllers/userController.js');
 var cors = require('cors');																																					
 
-const jwt = require('_helpers/jwt');
-const errorHandler = require('_helpers/error-handler');
+const jwt = require('./_helpers/jwt');
+
 
 var app = express();
 app.use(bodyParser.json());
