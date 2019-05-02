@@ -2,7 +2,16 @@ const express = require('express');
 var router = express.Router();
 var ObjectId = require('mongoose').Types.ObjectId;
 
+const userService = require('./user.service');
+
 var { User } = require('../models/user');
+router.post('/authenticate', authenticate);
+
+function authenticate(req, res, next) {
+    userService.authenticate(req.body)
+        .then(user => user ? res.json(user) : res.status(400).json({ message: 'Username or password is incorrect' }))
+        .catch(err => next(err));
+}
 
 // => localhost:3000/users/
 router.get('/', (req, res) => {
