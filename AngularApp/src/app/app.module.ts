@@ -9,6 +9,7 @@ import {MatNativeDateModule} from '@angular/material';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {DemoMaterialModule} from './material-module';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
@@ -35,6 +36,7 @@ import { RegisterComponent } from './register';
     NgSelectModule,
     ReactiveFormsModule,
     HttpClientModule,
+    HttpModule,
     MatRadioModule,
     BrowserAnimationsModule,
     DemoMaterialModule,

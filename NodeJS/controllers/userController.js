@@ -32,9 +32,13 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
+	console.log('Data from request:'+req);
     var u = new User({
         guid: req.body.guid,
 		isActive: req.body.isActive,
+		firstName: req.body.firstName,
+		lastName: req.body.lastName,
+		password: req.body.password,
 		name: req.body.name,
 		gender: req.body.gender,
 		age: req.body.age,
@@ -61,6 +65,9 @@ router.put('/:id', (req, res) => {
         guid: req.body.guid,
 		isActive: req.body.isActive,
 		name: req.body.name,
+		firstName: req.body.firstName,
+		lastName: req.body.lastName,
+		password: req.body.password,
 		gender: req.body.gender,
 		age: req.body.age,
 		type: req.body.type,

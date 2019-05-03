@@ -1,39 +1,45 @@
 <h2>Register</h2>
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+<form #userForm="ngForm" [formGroup]="registerForm" (ngSubmit)="onSubmit(userForm)">
+    <div class="form-group">
+      <input type="hidden" formControlName="_id" name="_id" [(ngModel)]="userService.selectedUser._id"/>
+      <input type="hidden" formControlName="isActive" name="isActive" value=true [(ngModel)]="userService.selectedUser.isActive"/>
+    </div>         
     <div class="form-group">
         <label for="firstName">First Name</label>
-        <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+        <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" [(ngModel)]="userService.selectedUser.firstName"/>
         <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
             <div *ngIf="f.firstName.errors.required">First Name is required</div>
         </div>
     </div>
     <div class="form-group">
         <label for="lastName">Last Name</label>
-        <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+        <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" [(ngModel)]="userService.selectedUser.lastName"/>
         <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
             <div *ngIf="f.lastName.errors.required">Last Name is required</div>
         </div>
     </div>
     <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-            <div *ngIf="f.username.errors.required">Username is required</div>
-        </div>
-    </div>
-    <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" [(ngModel)]="userService.selectedUser.password"/>
         <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
             <div *ngIf="f.password.errors.required">Password is required</div>
             <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
         </div>
     </div>
     <div class="form-group">
-        <mat-radio-group aria-label="Select an option">
-          <mat-radio-button value="1">Male</mat-radio-button> &nbsp; &nbsp; &nbsp; &nbsp; 
-          <mat-radio-button value="2">Female</mat-radio-button>
-        </mat-radio-group>
+    <label>Gender :</label><br/>
+        <p>
+                    <label>
+                      &nbsp;&nbsp;&nbsp;&nbsp;<input formControlName="gender" value="male" type="radio" checked [(ngModel)]="userService.selectedUser.gender"/>
+                      <span>Male</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      &nbsp;&nbsp;&nbsp;&nbsp;<input formControlName="gender" value="female" type="radio" [(ngModel)]="userService.selectedUser.gender" />
+                      <span>Female</span>
+                    </label>
+                  </p>  
     </div>
     <div class="form-group">
         <label for="bloodgroup">Bloodgroup</label>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
@@ -49,10 +55,19 @@
         </select>  
     </div>
     <div class="form-group">
-        <mat-radio-group aria-label="Select an option">
-          <mat-radio-button value="1">Donor</mat-radio-button> &nbsp; &nbsp; &nbsp; &nbsp; 
-          <mat-radio-button value="2">Recipient</mat-radio-button>
-        </mat-radio-group>
+    <label>Type :</label><br/>
+        <p>
+                    <label>
+                      &nbsp;&nbsp;&nbsp;&nbsp;<input formControlName="type" value="donor" type="radio" checked [(ngModel)]="userService.selectedUser.type"/>
+                      <span>Donor</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                     &nbsp;&nbsp;&nbsp;&nbsp;<input formControlName="type" value="recipient" type="radio" [(ngModel)]="userService.selectedUser.type" />
+                      <span>Recipient</span>
+                    </label>
+                  </p>  
     </div>
     <div class="form-group">
         <label for="age">Age</label>
@@ -65,25 +80,25 @@
         <label for="email">Email</label>
         <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
         <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-            <div *ngIf="f.email.errors.required">Age is required</div>
+            <div *ngIf="f.email.errors.required">Email is required</div>
         </div>
     </div>
     <div class="form-group">
         <label for="phone">Phone</label>
         <input type="text" formControlName="phone" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
         <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
-            <div *ngIf="f.phone.errors.required">Age is required</div>
+            <div *ngIf="f.phone.errors.required">Phone is required</div>
         </div>
     </div>
     <div class="form-group">
         <label for="address">Address</label>
         <input type="text" formControlName="address" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.address.errors }" />
         <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
-            <div *ngIf="f.address.errors.required">Age is required</div>
+            <div *ngIf="f.address.errors.required">Address is required</div>
         </div>
     </div>
     <div class="form-group">
-        <button [disabled]="loading" class="btn btn-primary">Register</button>
+        <button [disabled]="loading" type="submit" class="btn btn-primary">Register</button>
         <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
         <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
     </div>
