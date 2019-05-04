@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
 import { User } from './user.model';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class UserService {
   selectedUser: User;
   users: User[];
@@ -15,6 +17,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   postUser(u: User) {
+    console.log('User Post'+u);
     return this.http.post(this.baseURL, u);
   }
 
@@ -23,6 +26,7 @@ export class UserService {
   }
 
   putUser(u: User) {
+    console.log('User Put'+u);
     return this.http.put(this.baseURL + `/${u._id}`, u);
   }
 

@@ -2,6 +2,9 @@ export class User {
   _id: string;
   guid: string;
   isActive: boolean;
+  firstName: string;
+  lastName: string;
+  password: string;
   name: string;
   gender: string;
   age: number;

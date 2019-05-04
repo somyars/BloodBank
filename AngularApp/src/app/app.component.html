@@ -1,3 +1,29 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<app-user></app-user>
+<!-- nav -->
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/">Home</a>
+        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+    </div>
+</nav>
 
+<!-- main app container -->
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 offset-sm-3">
+                <alert></alert>
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- credits -->
+<div class="text-center">
+    <p>
+        <a href="http://jasonwatmore.com/post/2018/10/29/angular-7-user-registration-and-login-example-tutorial" target="_top">Bloodbank.com</a>
+    </p>
+    <p>
+        <a href="#" target="_top">All rights reserved</a>
+    </p>
+</div>

@@ -15,8 +15,6 @@ declare var M: any;
 })
 export class UserComponent implements OnInit {
 
-
-
     bloodtype = [
         {id: 1, name: 'A+'},
         {id: 2, name: 'A-'},
@@ -45,6 +43,9 @@ export class UserComponent implements OnInit {
       isActive: true,
       gender: "",
       name: "",
+      firstName: "",
+      lastName: "",
+      password: "",
       type: "",
       bloodgroup: "",
       email: "",
