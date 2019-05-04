@@ -84,6 +84,10 @@ export class RegisterComponent implements OnInit {
 
     onSubmit(form: FormGroup) {
     if (form.value._id == "") {
+      var address = this.userService.selectedUser.address;
+      console.log(address);
+      console.log("hello");
+      geocode(address);
       this.userService.postUser(form.value).subscribe((res) => {
         this.resetForm(form); 
         M.toast({ html: 'Saved successfully', classes: 'rounded' });
