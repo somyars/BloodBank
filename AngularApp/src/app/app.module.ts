@@ -10,6 +10,7 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {DemoMaterialModule} from './material-module';
 import { HttpModule } from '@angular/http';
+import {RecaptchaModule} from 'ng-recaptcha';
 
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
@@ -40,6 +41,7 @@ import { RegisterComponent } from './register';
     MatRadioModule,
     BrowserAnimationsModule,
     DemoMaterialModule,
+    RecaptchaModule.forRoot(),
     routing
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

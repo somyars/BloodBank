@@ -1,0 +1,194 @@
+  1 {
+  2   "definitions": {},
+  3   "$schema": "http://json-schema.org/draft-07/schema#",
+  4   "$id": "http://example.com/root.json",
+  5   "type": "array",
+  6   "title": "The Root Schema",
+  7   "items": {
+  8     "$id": "#/items",
+  9     "type": "object",
+ 10     "title": "The Items Schema",
+ 11     "required": [
+ 12       "_id",
+ 13       "guid",
+ 14       "isActive",
+ 15       "fisrtName",
+ 16       "lastName",
+ 17       "password",
+ 18       "email",
+ 19       "gender",
+ 20       "age",
+ 21       "type",
+ 22       "bloodgroup",
+ 23       "phone",
+ 24       "address",
+ 25       "geometry"
+ 26     ],
+ 27     "properties": {
+ 28       "_id": {
+ 29         "$id": "#/items/properties/_id",
+ 30         "type": "string",
+ 31         "title": "The _id Schema",
+ 32         "default": "",
+ 33         "examples": [
+ 34           "5ccbcadd06555676619ac943"
+ 35         ],
+ 36         "pattern": "^(.*)$"
+ 37       },
+ 38       "guid": {
+ 39         "$id": "#/items/properties/guid",
+ 40         "type": "string",
+ 41         "title": "The Guid Schema",
+ 42         "default": "",
+ 43         "examples": [
+ 44           "78e56298-0f77-43bf-80e8-b91416f03063"
+ 45         ],
+ 46         "pattern": "^(.*)$"
+ 47       },
+ 48       "isActive": {
+ 49         "$id": "#/items/properties/isActive",
+ 50         "type": "boolean",
+ 51         "title": "The Isactive Schema",
+ 52         "default": false,
+ 53         "examples": [
+ 54           true
+ 55         ]
+ 56       },
+ 57       "fisrtName": {
+ 58         "$id": "#/items/properties/fisrtName",
+ 59         "type": "string",
+ 60         "title": "The Fisrtname Schema",
+ 61         "default": "",
+ 62         "examples": [
+ 63           "Janna"
+ 64         ],
+ 65         "pattern": "^(.*)$"
+ 66       },
+ 67       "lastName": {
+ 68         "$id": "#/items/properties/lastName",
+ 69         "type": "string",
+ 70         "title": "The Lastname Schema",
+ 71         "default": "",
+ 72         "examples": [
+ 73           "Wilkerson"
+ 74         ],
+ 75         "pattern": "^(.*)$"
+ 76       },
+ 77       "password": {
+ 78         "$id": "#/items/properties/password",
+ 79         "type": "string",
+ 80         "title": "The Password Schema",
+ 81         "default": "",
+ 82         "examples": [
+ 83           "Combs44"
+ 84         ],
+ 85         "pattern": "^(.*)$"
+ 86       },
+ 87       "email": {
+ 88         "$id": "#/items/properties/email",
+ 89         "type": "string",
+ 90         "title": "The Email Schema",
+ 91         "default": "",
+ 92         "examples": [
+ 93           "combswilkerson@limage.com"
+ 94         ],
+ 95         "pattern": "^(.*)$"
+ 96       },
+ 97       "gender": {
+ 98         "$id": "#/items/properties/gender",
+ 99         "type": "string",
+100         "title": "The Gender Schema",
+101         "default": "",
+102         "examples": [
+103           "male"
+104         ],
+105         "pattern": "^(.*)$"
+106       },
+107       "age": {
+108         "$id": "#/items/properties/age",
+109         "type": "integer",
+110         "title": "The Age Schema",
+111         "default": 0,
+112         "examples": [
+113           35
+114         ]
+115       },
+116       "type": {
+117         "$id": "#/items/properties/type",
+118         "type": "string",
+119         "title": "The Type Schema",
+120         "default": "",
+121         "examples": [
+122           "donor"
+123         ],
+124         "pattern": "^(.*)$"
+125       },
+126       "bloodgroup": {
+127         "$id": "#/items/properties/bloodgroup",
+128         "type": "string",
+129         "title": "The Bloodgroup Schema",
+130         "default": "",
+131         "examples": [
+132           "A+"
+133         ],
+134         "pattern": "^(.*)$"
+135       },
+136       "phone": {
+137         "$id": "#/items/properties/phone",
+138         "type": "string",
+139         "title": "The Phone Schema",
+140         "default": "",
+141         "examples": [
+142           "+1 (972) 455-2821"
+143         ],
+144         "pattern": "^(.*)$"
+145       },
+146       "address": {
+147         "$id": "#/items/properties/address",
+148         "type": "string",
+149         "title": "The Address Schema",
+150         "default": "",
+151         "examples": [
+152           "633 Rutherford Place, Gorst, California, 9497"
+153         ],
+154         "pattern": "^(.*)$"
+155       },
+156       "geometry": {
+157         "$id": "#/items/properties/geometry",
+158         "type": "object",
+159         "title": "The Geometry Schema",
+160         "required": [
+161           "type",
+162           "coordinates"
+163         ],
+164         "properties": {
+165           "type": {
+166             "$id": "#/items/properties/geometry/properties/type",
+167             "type": "string",
+168             "title": "The Type Schema",
+169             "default": "",
+170             "examples": [
+171               "Point"
+172             ],
+173             "pattern": "^(.*)$"
+174           },
+175           "coordinates": {
+176             "$id": "#/items/properties/geometry/properties/coordinates",
+177             "type": "array",
+178             "title": "The Coordinates Schema",
+179             "items": {
+180               "$id": "#/items/properties/geometry/properties/coordinates/items",
+181               "type": "number",
+182               "title": "The Items Schema",
+183               "default": 0.0,
+184               "examples": [
+185                 -75.581381,
+186                 16.796876
+187               ]
+188             }
+189           }
+190         }
+191       }
+192     }
+193   }
+194 }

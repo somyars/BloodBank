@@ -24,6 +24,7 @@
     "@angular/router": "~7.2.0",
     "@ng-select/ng-select": "^2.18.0",
     "core-js": "^2.5.4",
+    "ng-recaptcha": "^4.2.1",
     "rxjs": "^6.5.1",
     "rxjs-compat": "^6.5.1",
     "tslib": "^1.9.0",

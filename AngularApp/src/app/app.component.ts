@@ -13,9 +13,16 @@ export class AppComponent {
   title = 'AngularApp';
 }*/
 
-@Component({ selector: 'app', templateUrl: 'app.component.html' })
+@Component({
+  selector: 'app',
+  templateUrl: 'app.component.html'
+ })
 export class AppComponent {
     currentUser: User;
+
+    resolved(captchaResponse: string) {
+        console.log('Resolved captcha with response ${captchaResponse}');
+    }
 
     constructor(
         private router: Router,
