@@ -14,11 +14,26 @@ function authenticate(req, res, next) {
 }
 
 // => localhost:3000/users/
-router.get('/', (req, res) => {
-    User.find((err, docs) => {
-        if (!err) { res.send(docs); }
-        else { console.log('Error in Retriving Users :' + JSON.stringify(err, undefined, 2)); }
-    });
+router.get('/', (req, res, next) => {
+    // User.find((err, docs) => {
+    //     if (!err) { res.send(docs); }
+    //     else { console.log('Error in Retriving Users :' + JSON.stringify(err, undefined, 2)); }
+    // });
+    User.aggregate([
+        {
+            $geoNear: {
+                near: { type: 'Point', coordinates: [parseFloat(req.query.lng), parseFloat(req.query.lat)] },
+                distanceField: "dist.calculated",
+                maxDistance: 100000, // 100000 meters
+                spherical: true
+            }
+        },
+        {
+            $match: { bloodgroup: req.query.bloodgroup }
+           }
+    ]).then(function(users, next){
+        res.send(users);
+    }).catch(next);
 });
 
 router.get('/:id', (req, res) => {
