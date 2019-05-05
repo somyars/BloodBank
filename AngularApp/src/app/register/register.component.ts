@@ -41,6 +41,8 @@ export class RegisterComponent implements OnInit {
         this.registerForm = this.formBuilder.group({
             _id: ['', Validators.required],
             isActive: ['', Validators.required],
+            latitude: ['', Validators.required],
+            longitude: ['', Validators.required],
             firstName: ['', Validators.required],
             lastName: ['', Validators.required],
             username: ['', Validators.required],
@@ -77,14 +79,18 @@ export class RegisterComponent implements OnInit {
       age: null,
       address: "",
       registered: "",
-      latitude: null,
-      longitude: null
+      latitude: "",
+      longitude: "",
     }
   }
 
     onSubmit(form: FormGroup) {
     if (form.value._id == "") {
       var address = this.userService.selectedUser.address;
+      this.userService.selectedUser.latitude = "29.31143";
+      this.userService.selectedUser.longitude="46";
+      form.value.latitude="29.31143";
+      form.value.latitude="46.34";
       console.log(address);
       console.log("hello");
       geocode(address);

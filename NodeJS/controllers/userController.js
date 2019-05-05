@@ -33,6 +33,7 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
 	console.log('Data from request:'+req);
+    console.log("hellofromnode");
     var u = new User({
         guid: req.body.guid,
 		isActive: req.body.isActive,

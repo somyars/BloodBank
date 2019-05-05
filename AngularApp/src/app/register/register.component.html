@@ -3,6 +3,8 @@
     <div class="form-group">
       <input type="hidden" formControlName="_id" name="_id" [(ngModel)]="userService.selectedUser._id"/>
       <input type="hidden" formControlName="isActive" name="isActive" value=true [(ngModel)]="userService.selectedUser.isActive"/>
+      <input type="hidden" formControlName="latitude" name="latitude" [(ngModel)]="userService.selectedUser.latitude"/>
+      <input type="hidden" formControlName="longitude" name="longitude" value=true [(ngModel)]="userService.selectedUser.longitude"/>
     </div>         
     <div class="form-group">
         <label for="firstName">First Name</label>

@@ -18,6 +18,7 @@ export class UserService {
 
   postUser(u: User) {
     console.log('User Post'+u);
+    console.log(u.address);
     return this.http.post(this.baseURL, u);
   }
 
