@@ -20,49 +20,45 @@ Run `nodemon index.js` for a dev server. Navigate to `http://localhost:3000/`. T
 
 ## Node Dependencies
 
-Package                     Version
+Express      :               ^4.16.4
 
-Express                     ^4.16.4
+Express-jwt   :              ^5.3.1
 
-Express-jwt                 ^5.3.1
+Jsonwebtoken   :             ^8.5.1
 
-Jsonwebtoken                ^8.5.1
+Mongoose        :            ^5.5.4
 
-Mongoose                    ^5.5.4
+Cors             :           ^2.8.5
 
-Cors                        ^2.8.5
+Bcryptjs          :          ^2.4.3
 
-Bcryptjs                    ^2.4.3
+Body-parser        :         ^1.19.0
 
-Body-parser                 ^1.19.0
-
-Angular-google-recaptcha    ^1.0.3
+Angular-google-recaptcha  :  ^1.0.3
  
 ## Angular Dependencies
 
-Package                     Version
+@angular/animations      :   ^7.2.14
 
-@angular/animations         ^7.2.14
+@angular/cdk              :  ^7.3.7
 
-@angular/cdk                ^7.3.7
+@angular/common            : ~7.2.0
 
-@angular/common             ~7.2.0
+@angular/compiler           :~7.2.0
 
-@angular/compiler           ~7.2.0
+@angular/core               :~7.2.0
 
-@angular/core               ~7.2.0
+@angular/forms             : ~7.2.0
 
-@angular/forms              ~7.2.0
+@angular/http               :^7.2.14
 
-@angular/http               ^7.2.14
+@angular/router            : ~7.2.0
 
-@angular/router             ~7.2.0
+ng-recaptcha               : ^4.2.1
 
-ng-recaptcha                ^4.2.1
+rxjs                       : ^6.5.1
 
-rxjs                        ^6.5.1
-
-rxjs-compat                 ^6.5.1
+rxjs-compat                : ^6.5.1
  
 ## Installations
 
