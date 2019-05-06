@@ -87,7 +87,7 @@ export class RegisterComponent implements OnInit {
       var address = this.userService.selectedUser.address;
       console.log(address);
       console.log("hello");
-      geocode(address);
+      //geocode(address);
       this.userService.postUser(form.value).subscribe((res) => {
         this.resetForm(form); 
         M.toast({ html: 'Saved successfully', classes: 'rounded' });

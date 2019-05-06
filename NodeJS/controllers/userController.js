@@ -2,16 +2,91 @@ const express = require('express');
 var router = express.Router();
 var ObjectId = require('mongoose').Types.ObjectId;
 
+const passport = require('passport');
+const passportLocal = require('passport-local');
+const _ = require('lodash');
+
 const userService = require('./user.service');
 
-var { User } = require('../models/user');
-router.post('/authenticate', authenticate);
 
-function authenticate(req, res, next) {
-    userService.authenticate(req.body)
-        .then(user => user ? res.json(user) : res.status(400).json({ message: 'Username or password is incorrect' }))
-        .catch(err => next(err));
-}
+const mongoose = require('mongoose');
+var { userSchema } = require('../models/user');
+const User = mongoose.model('User',userSchema);
+
+/*router.post('/authenticate', authenticate);
+
+function authenticate(req, res) {
+	if(req) {
+	console.log('user controller');
+    passport.authenticate('local', (err, user, info) => {      
+		console.log('auth');
+        if (err) return res.status(400).json(err);
+        else if (user) return res.status(200).json({ "token": user.generateJwt() });
+        else return res.status(404).json(info);
+    })(req, res);
+	}
+}*/
+
+/*router.post('/authenticate', (req, res, next) => {
+	console.log('authentication',next);
+
+    passport.authenticate('local', (err, user, info) => {      
+		console.log('auth');
+        if (err)
+		{ //err = new Error("Error 400");
+		return res.status(400).json(err);
+		//return next(err);//res.status(400).json(err);
+		}
+        else if (user){
+		console.log("Here");
+		return res.status(200).json({ "token": user.generateJwt() });
+		//return next();
+		}
+        else {
+		console.log("Here 404");
+		err = new Error("Error 404");
+		//return next();
+		return res.status(404).json(info);
+		}//res.status(404).json(info);
+    })(req, res);
+
+
+	/*passport.authenticate('local', (err, user, info) => {       
+        // error from passport middleware
+        if (err){ 
+		let v = res.status(400).json(err);
+		console.log("error::::", v);
+		return v;
+		}
+        // registered user
+        else if (user){ 
+		let v = res.status(200).json({ "token": user.generateJwt() });
+		console.log("resp::::", v);
+		return v;
+		}
+        // unknown user or wrong password
+        else{
+		let v = res.status(404).json(info);
+		console.log("else 404::::", v);
+		return v;
+		}
+    })(req, res);
+});*/
+
+
+
+router.post('/authenticate', (req, res, next) => {
+    // call for passport authentication
+	console.log("Next",next);
+    passport.authenticate('local', (err, user, info) => {       
+        // error from passport middleware
+        if (err) return res.status(400).json(err);
+        // registered user
+        else if (user) return res.status(200).json({ "token": user.generateJwt() });
+        // unknown user or wrong password
+        else return res.status(404).json(info);
+    })(req, res,next);
+});
 
 // => localhost:3000/users/
 router.get('/', (req, res) => {

@@ -10,9 +10,28 @@ import { User } from './user.model';
     providedIn: 'root'
 })
 export class UserService {
-  selectedUser: User;
+  selectedUser: User = {
+    _id : "",
+    guid: "",
+      isActive: true,
+      gender: "",
+      name: "",
+      firstName: "",
+      lastName: "",
+      password: "",
+      type: "",
+      bloodgroup: "",
+      email: "",
+      phone: "",
+      age: null,
+      address: "",
+      registered: "",
+      latitude: null,
+      longitude: null
+  };
   users: User[];
   readonly baseURL = 'http://localhost:3000/users';
+  noAuthHeader = { headers: new HttpHeaders({ 'NoAuth': 'True' }) };
 
   constructor(private http: HttpClient) { }
 
@@ -34,4 +53,38 @@ export class UserService {
     return this.http.delete(this.baseURL + `/${_id}`);
   }
 
+  login(authCredentials) {
+    console.log('user.service');
+    return this.http.post(this.baseURL + '/authenticate', authCredentials,this.noAuthHeader);
+  }
+
+  setToken(token: string) {
+    localStorage.setItem('token', token);
+  }
+
+  getToken() {
+    return localStorage.getItem('token');
+  }
+
+  deleteToken() {
+    localStorage.removeItem('token');
+  }
+
+  getUserPayload() {
+    var token = this.getToken();
+    if (token) {
+      var userPayload = atob(token.split('.')[1]);
+      return JSON.parse(userPayload);
+    }
+    else
+      return null;
+  }
+
+  isLoggedIn() {
+    var userPayload = this.getUserPayload();
+    if (userPayload)
+      return userPayload.exp > Date.now() / 1000;
+    else
+      return false;
+  }
 }

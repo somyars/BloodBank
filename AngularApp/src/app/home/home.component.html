@@ -1,0 +1,33 @@
+<div>
+       <table class="responsive-table highlight">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Phone</th>
+                      <th>Age</th>
+                      <th>Gender</th>
+                      <th>Type</th>
+                      <th>Active</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tr *ngFor="let u of userService.users">
+                    <td>{{u.name}}</td>
+                    <td>{{u.email}}</td>
+                    <td>{{u.phone}}</td>
+                    <td>{{u.age}}</td>
+                    <td>{{u.gender}}</td>
+                    <td>{{u.type}}</td> 
+                    <td>{{u.isActive}}</td>
+                    <td>
+                        <a class="action-btn" (click)="onEdit(u)">
+                          <i class="material-icons">edit</i>
+                        </a>
+                        <a class="action-btn" (click)="onDelete(u._id,userForm)">
+                          <i class="material-icons">delete</i>
+                        </a>
+                      </td>
+                  </tr>
+                </table>
+</div>

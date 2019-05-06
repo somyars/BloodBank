@@ -1,0 +1,8 @@
+{
+    "development": {
+        "PORT": 3000,
+        "MONGODB_URI": "mongodb+srv://sshjuser:SSHJ678!@cluster0-s1qny.mongodb.net/BloodbankDB?retryWrites=true",
+        "JWT_SECRET": "SECRET#123",
+        "JWT_EXP": "10m"
+    }
+}

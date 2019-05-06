@@ -5,6 +5,8 @@ import { first } from 'rxjs/operators';
 
 import { AlertService, AuthenticationService } from '../_services';
 
+import { UserService } from '../shared/user.service';
+
 @Component({templateUrl: 'login.component.html'})
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
@@ -17,7 +19,8 @@ export class LoginComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private authenticationService: AuthenticationService,
-        private alertService: AlertService
+        private alertService: AlertService,
+        private userService: UserService
     ) {
         // redirect to home if already logged in
         if (this.authenticationService.currentUserValue) { 
@@ -38,11 +41,11 @@ export class LoginComponent implements OnInit {
     // convenience getter for easy access to form fields
     get f() { return this.loginForm.controls; }
 
-    onSubmit() {
+    onSubmit(form) {
         this.submitted = true;
 
         // stop here if form is invalid
-        if (this.loginForm.invalid) {
+        /*if (this.loginForm.invalid) {
             return;
         }
 
@@ -56,6 +59,18 @@ export class LoginComponent implements OnInit {
                 error => {
                     this.alertService.error(error);
                     this.loading = false;
-                });
+                });*/
+      console.log('login.comp');
+      this.userService.login(form.value).subscribe(
+
+      res => {
+        this.userService.setToken(res['token']);
+        this.router.navigateByUrl('/');
+      },
+      err => {
+      console.log("Error:",err);
+        //this.serverErrorMessages = err.error.message;
+      }
+      );
     }
 }
