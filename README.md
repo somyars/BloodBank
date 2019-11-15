@@ -45,6 +45,7 @@ To specify GeoJSON data, use an embedded document with:
 
 ## Password Hashing and Salting
 Bcrypt stands for Blowfish cipher and crypt for the hashing function.
+
 ![Repo List](screenshots/hashing.PNG)
 
 ## JWT Authentication
@@ -52,11 +53,13 @@ Package “jsonwebtoken” is utilized to implement JWT authentication.
 
 ## Containerizing the App
 The Dockerfile contains the steps needed to containerize the app. 
+
 ![Repo List](screenshots/docker.PNG)
 
 ## Assessment
 From a benchmarking of NoSQL databases, we found out that MongoDB maintains consistency and partition tolerance, meanwhile, other services, such as DynamoDB, ensures availability and partition tolerance. In the context of our application, we do not want to give “false hopes” to the recipients, therefore we think that consistency is more important in this context. This reinforces our decision of using MongoDB in the context of a healthcare app.
-![Repo List](screenshots/cap.PNG)
+
+![Repo List](screenshots/CAP.PNG)
 
   
 
